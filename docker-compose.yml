@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+
+  deep-learn-tools:
+    build: ./
+    container_name: deep-learn-tools
+    restart: always
+    environment:
+      ENV: ${ENV}
+    volumes:
+      - ./notebooks:/opt/notebooks
+    networks:
+      - deep-shared
+    ports:
+      - 8888:8888
+
+networks:
+  deep-shared:
+    driver: bridge
